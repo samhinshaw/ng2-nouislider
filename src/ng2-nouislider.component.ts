@@ -129,28 +129,64 @@ export class NouisliderComponent implements ControlValueAccessor, OnInit, OnChan
       }
     }
 
-    this.slider.on('set', (values: string[], handle: number, unencoded: number[]) => {
-      this.eventHandler(this.set, values, handle, unencoded);
+    this.slider.on('set', (values: string[], handle: number, unencoded: number[], tap: any, positions: any) => {
+      this.set.emit({
+        values, 
+        handle, 
+        unencoded,
+        tap,
+        positions
+      });
     });
 
-    this.slider.on('update', (values: string[], handle: number, unencoded: number[]) => {
-      this.update.emit(this.toValues(values));
+    this.slider.on('update', (values: string[], handle: number, unencoded: number[], tap: any, positions: any) => {
+      this.update.emit({
+        values, 
+        handle, 
+        unencoded,
+        tap,
+        positions
+      });
     });
 
-    this.slider.on('change', (values: string[], handle: number, unencoded: number[]) => {
-      this.change.emit(this.toValues(values));
+    this.slider.on('change', (values: string[], handle: number, unencoded: number[], tap: any, positions: any) => {
+      this.change.emit({
+        values, 
+        handle, 
+        unencoded,
+        tap,
+        positions
+      })
     });
 
-    this.slider.on('slide', (values: string[], handle: number, unencoded: number[]) => {
-      this.eventHandler(this.slide, values, handle, unencoded);
+    this.slider.on('slide', (values: string[], handle: number, unencoded: number[], tap: any, positions: any) => {
+      this.slide.emit({
+        values, 
+        handle, 
+        unencoded,
+        tap,
+        positions
+      })
     });
 
-    this.slider.on('start', (values: string[], handle: number, unencoded: number[]) => {
-      this.start.emit(this.toValues(values));
+    this.slider.on('start', (values: string[], handle: number, unencoded: number[], tap: any, positions: any) => {
+      this.start.emit({
+        values, 
+        handle, 
+        unencoded,
+        tap,
+        positions
+      });
     });
 
-    this.slider.on('end', (values: string[], handle: number, unencoded: number[]) => {
-      this.end.emit(this.toValues(values));
+    this.slider.on('end', (values: string[], handle: number, unencoded: number[], tap: any, positions: any) => {
+      this.end.emit({
+        values, 
+        handle, 
+        unencoded,
+        tap,
+        positions
+      });
     });
   }
 
