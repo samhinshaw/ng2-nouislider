@@ -32,6 +32,14 @@ export class DefaultFormatter implements NouiFormatter {
   }
 }
 
+export interface NouiEvent {
+  values: any[]
+  handle: number
+  unencoded: number[]
+  tap: boolean
+  positions: number[]
+}
+
 @Component({
   selector: 'nouislider',
   host: {
@@ -75,12 +83,12 @@ export class NouisliderComponent implements ControlValueAccessor, OnInit, OnChan
   @Input() public onKeydown: any;
   @Input() public formControl: FormControl;
   @Input() public tooltips: Array<any>;
-  @Output() public change: EventEmitter<any> = new EventEmitter(true);
-  @Output() public update: EventEmitter<any> = new EventEmitter(true);
-  @Output() public slide: EventEmitter<any> = new EventEmitter(true);
-  @Output() public set: EventEmitter<any> = new EventEmitter(true);
-  @Output() public start: EventEmitter<any> = new EventEmitter(true);
-  @Output() public end: EventEmitter<any> = new EventEmitter(true);
+  @Output() public change: EventEmitter<NouiEvent> = new EventEmitter(true);
+  @Output() public update: EventEmitter<NouiEvent> = new EventEmitter(true);
+  @Output() public slide: EventEmitter<NouiEvent> = new EventEmitter(true);
+  @Output() public set: EventEmitter<NouiEvent> = new EventEmitter(true);
+  @Output() public start: EventEmitter<NouiEvent> = new EventEmitter(true);
+  @Output() public end: EventEmitter<NouiEvent> = new EventEmitter(true);
   private value: any;
   private onChange: any = Function.prototype;
   private onTouched: any = Function.prototype;
