@@ -8,6 +8,13 @@ export declare class DefaultFormatter implements NouiFormatter {
     to(value: number): string;
     from(value: string): number;
 }
+export interface NouiEvent {
+    values: any[];
+    handle: number;
+    unencoded: number[];
+    tap: boolean;
+    positions: number[];
+}
 export declare class NouisliderComponent implements ControlValueAccessor, OnInit, OnChanges {
     private el;
     private renderer;
@@ -31,12 +38,12 @@ export declare class NouisliderComponent implements ControlValueAccessor, OnInit
     onKeydown: any;
     formControl: FormControl;
     tooltips: Array<any>;
-    change: EventEmitter<any>;
-    update: EventEmitter<any>;
-    slide: EventEmitter<any>;
-    set: EventEmitter<any>;
-    start: EventEmitter<any>;
-    end: EventEmitter<any>;
+    change: EventEmitter<NouiEvent>;
+    update: EventEmitter<NouiEvent>;
+    slide: EventEmitter<NouiEvent>;
+    set: EventEmitter<NouiEvent>;
+    start: EventEmitter<NouiEvent>;
+    end: EventEmitter<NouiEvent>;
     private value;
     private onChange;
     private onTouched;
